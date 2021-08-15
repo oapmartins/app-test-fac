@@ -70,8 +70,9 @@ _body(BuildContext context) {
                           children: <Widget>[
                             inputFile(label: 'Nome'),
                             inputFile(label: 'Email'),
+                            inputFile(label: 'Confirmar Email'),
                             inputFile(label: 'Senha', obscureText: true),
-                            SizedBox(height: 90),
+                            SizedBox(height: 25),
                             Container(
                               width: double.infinity,
                               child: ElevatedButton(

@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_fac/pages/register_page.dart';
 
+import 'info_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -18,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     final tabs = [
       Container(child: _body(context)),
       Center(child: RegisterPage()),
-      Center(child: Text('Info'))
+      Center(child: InfoPage())
     ];
 
     return Scaffold(
