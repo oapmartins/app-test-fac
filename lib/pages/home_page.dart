@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_fac/pages/register_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,8 +14,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final tabs = [
+      Container(child: _body(context)),
+      Center(child: RegisterPage()),
+      Center(child: Text('Info'))
+    ];
+
     return Scaffold(
-      body: _body(context),
+      body: tabs[_selectedIndex],
       bottomNavigationBar: _bottomNavigator(context),
     );
   }
@@ -123,20 +131,7 @@ class _HomePageState extends State<HomePage> {
                                 Icons.account_balance, 'Patrimônio', context),
                           ],
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(top: 0, right: 5, left: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            _cardIcones(
-                                Icons.volunteer_activism, 'Concessão', context),
-                            _cardIcones(Icons.hail, 'Licitação', context),
-                            _cardIcones(
-                                Icons.accessible_forward, 'Frotas', context),
-                          ],
-                        ),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -151,64 +146,83 @@ class _HomePageState extends State<HomePage> {
   _bottomNavigator(BuildContext context) {
     return Container(
       child: BottomNavigationBar(
-        backgroundColor: Colors.grey[150],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        iconSize: 25,
-        selectedFontSize: 12,
-        unselectedFontSize: 12,
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.grey,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-              ),
-              label: 'Início'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.mark_email_unread), label: 'Mensagens'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Conta'),
-        ],
-      ),
+          backgroundColor: Colors.grey[150],
+          currentIndex: _selectedIndex,
+          iconSize: 25,
+          selectedFontSize: 12,
+          unselectedFontSize: 12,
+          selectedItemColor: Colors.green,
+          unselectedItemColor: Colors.grey,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Início'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_add_alt_1), label: 'Cadastro'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.info), label: 'Informações'),
+          ],
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          }),
     );
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   _cardIcones(IconData icone, String text, BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 3.2,
-      height: 100,
-      child: Card(
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                  color: Colors.green[50],
-                  borderRadius: BorderRadius.circular(50)),
-              child: Icon(
-                icone,
-                color: Colors.green,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => SecondRoute()));
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width / 3.2,
+        height: 100,
+        child: Card(
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                    color: Colors.green[50],
+                    borderRadius: BorderRadius.circular(50)),
+                child: Icon(
+                  icone,
+                  color: Colors.green,
+                ),
               ),
-            ),
-            Text(
-              text,
-              overflow: TextOverflow.visible,
-              style: TextStyle(
-                fontSize: 11,
-              ),
-              textAlign: TextAlign.justify,
-            )
-          ],
+              Text(
+                text,
+                overflow: TextOverflow.visible,
+                style: TextStyle(
+                  fontSize: 11,
+                ),
+                textAlign: TextAlign.justify,
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Route"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
         ),
       ),
     );
