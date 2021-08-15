@@ -57,11 +57,11 @@ _body(BuildContext context) {
               ),
               // width: MediaQuery.of(context).size.width,
               height: constraints.maxHeight * .8,
-              child: SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  height: MediaQuery.of(context).size.height - 50,
-                  width: double.infinity,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                height: MediaQuery.of(context).size.height - 50,
+                width: double.infinity,
+                child: SingleChildScrollView(
                   child: Container(
                     child: Column(
                       children: <Widget>[
@@ -72,7 +72,7 @@ _body(BuildContext context) {
                             inputFile(label: 'Email'),
                             inputFile(label: 'Confirmar Email'),
                             inputFile(label: 'Senha', obscureText: true),
-                            SizedBox(height: 25),
+                            SizedBox(height: 10),
                             Container(
                               width: double.infinity,
                               child: ElevatedButton(
@@ -83,7 +83,7 @@ _body(BuildContext context) {
                                         RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(6.0),
                                 ))),
-                                child: Text('Cadastrar'),
+                                child: Text('Cadastrar', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
                               ),
                             )
                           ],

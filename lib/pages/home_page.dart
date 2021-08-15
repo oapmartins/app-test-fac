@@ -16,7 +16,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     final tabs = [
       Container(child: _body(context)),
       Center(child: RegisterPage()),
@@ -47,35 +46,25 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: size.width * .5,
                       padding: EdgeInsets.all(10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             'FAC SISTEMAS',
                             style: TextStyle(
+                                fontSize: 10,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
-                          Text('DWEB', style: TextStyle(color: Colors.white)),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: size.width * .5,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
                           Text(
                             'MODULOS',
                             style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                              fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          )
                         ],
                       ),
                     ),
@@ -156,7 +145,7 @@ class _HomePageState extends State<HomePage> {
           selectedItemColor: Colors.green,
           unselectedItemColor: Colors.grey,
           items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Início'),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Modulos'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person_add_alt_1), label: 'Cadastro'),
             BottomNavigationBarItem(
